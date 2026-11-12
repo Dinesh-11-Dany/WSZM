@@ -1,0 +1,5 @@
+step,source,url,downloaded_at_utc,local_file,size_bytes,notes
+step_1_2,NCRB Crime in India PDF,https://www.ncrb.gov.in/uploads/files/9BCII2023Snapshots-MegaCities2.pdf,2026-11-12T12:35:23Z,data\ncrb_pdfs\9BCII2023Snapshots-MegaCities2.pdf,136894,
+step_1_2,NCRB Crime in India PDF,https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/ciiyearwise2022/17016097489bCII2022Snapshots-MegaCities.pdf,2026-11-12T12:35:24Z,data\ncrb_pdfs\17016097489bCII2022Snapshots-MegaCities.pdf,143504,
+step_1_2,NCRB Crime in India PDF,https://www.ncrb.gov.in/uploads/files/2CrimeinIndia2023PartII2.pdf,2026-11-12T12:35:30Z,data\ncrb_pdfs\2CrimeinIndia2023PartII2.pdf,17734952,
+step_5,Bengaluru City Police Portal,https://bcp.karnataka.gov.in/english,2026-11-12T12:37:02Z,,,Checked live portal

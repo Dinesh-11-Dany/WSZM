@@ -1,0 +1,40 @@
+[
+  {
+    "step": "step_1_2",
+    "source": "NCRB Crime in India PDF",
+    "url": "https://www.ncrb.gov.in/uploads/files/9BCII2023Snapshots-MegaCities2.pdf",
+    "downloaded_at_utc": "2026-11-12T12:35:23Z",
+    "local_file": "data\\ncrb_pdfs\\9BCII2023Snapshots-MegaCities2.pdf",
+    "notes": "",
+    "sha256": "2b825bf84279c00c4c033fb0512fc787942cf2c7cd02d52cc88cfbcc095fec4b",
+    "size_bytes": 136894
+  },
+  {
+    "step": "step_1_2",
+    "source": "NCRB Crime in India PDF",
+    "url": "https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/ciiyearwise2022/17016097489bCII2022Snapshots-MegaCities.pdf",
+    "downloaded_at_utc": "2026-11-12T12:35:24Z",
+    "local_file": "data\\ncrb_pdfs\\17016097489bCII2022Snapshots-MegaCities.pdf",
+    "notes": "",
+    "sha256": "dc5c80d78cbc80a0b92c6615cb1dd7f1716d856efa0df867d5a43b1d84d53a44",
+    "size_bytes": 143504
+  },
+  {
+    "step": "step_1_2",
+    "source": "NCRB Crime in India PDF",
+    "url": "https://www.ncrb.gov.in/uploads/files/2CrimeinIndia2023PartII2.pdf",
+    "downloaded_at_utc": "2026-11-12T12:35:30Z",
+    "local_file": "data\\ncrb_pdfs\\2CrimeinIndia2023PartII2.pdf",
+    "notes": "",
+    "sha256": "e846cd4a27b9f867d50d261390e65d4efb598b0ecefba1f8da079fdf86e9dff6",
+    "size_bytes": 17734952
+  },
+  {
+    "step": "step_5",
+    "source": "Bengaluru City Police Portal",
+    "url": "https://bcp.karnataka.gov.in/english",
+    "downloaded_at_utc": "2026-11-12T12:37:02Z",
+    "local_file": null,
+    "notes": "Checked live portal"
+  }
+]

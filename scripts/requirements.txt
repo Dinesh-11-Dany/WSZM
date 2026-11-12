@@ -1,0 +1,10 @@
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+pandas>=2.1.0
+pdfplumber>=0.11.0
+truststore>=0.9.0
+# Optional Java-based PDF extractors (tabula-py requires Java JRE installed):
+tabula-py>=2.9.0
+# Optional (requires Ghostscript/OpenCV):
+# camelot-py[cv]>=0.11.0
+

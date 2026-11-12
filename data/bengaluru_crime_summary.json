@@ -1,0 +1,251 @@
+{
+  "city": "Bengaluru",
+  "generated_at_utc": "2026-11-12T12:37:32Z",
+  "metro_population_thousands": 13193.0,
+  "methodology_notes": [
+    "NCRB tracks Bengaluru among 19 metropolitan cities (>2 million population); street/locality crime is not publicly released.",
+    "NCRB follows the Principal Offence Rule (counting the single most severe offence per FIR).",
+    "Per NCRB guidance, cities should not be compared purely on raw crime totals due to varying e-FIR and registration practices."
+  ],
+  "extracted_pdf_tables": [
+    "bengaluru_9BCII2023Snapshots-MegaCities2_table_0.csv",
+    "bengaluru_17016097489bCII2022Snapshots-MegaCities_table_0.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_5.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_38.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_39.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_40.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_41.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_42.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_43.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_44.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_45.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_46.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_51.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_52.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_53.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_54.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_59.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_60.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_61.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_62.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_66.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_67.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_118.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_119.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_120.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_121.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_122.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_123.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_124.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_125.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_126.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_127.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_128.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_129.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_130.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_131.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_132.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_133.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_134.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_143.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_144.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_145.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_146.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_155.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_156.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_157.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_158.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_165.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_166.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_217.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_218.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_219.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_220.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_221.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_222.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_223.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_224.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_225.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_226.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_227.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_228.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_229.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_230.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_231.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_232.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_233.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_242.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_243.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_244.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_245.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_254.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_255.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_256.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_257.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_264.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_265.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_293.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_294.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_295.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_296.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_297.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_298.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_303.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_304.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_305.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_306.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_311.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_312.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_313.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_314.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_317.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_318.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_373.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_374.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_375.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_376.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_377.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_378.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_379.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_380.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_381.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_382.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_383.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_384.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_385.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_386.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_395.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_396.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_397.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_398.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_407.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_408.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_409.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_410.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_417.csv",
+    "bengaluru_2CrimeinIndia2023PartII2_table_418.csv"
+  ],
+  "csv_sources_parsed": [],
+  "bcp_portal_links": [
+    {
+      "title": "CENTRAL CRIME BRANCH",
+      "url": "https://bcp.karnataka.gov.in/8/central-crime-branch/en"
+    },
+    {
+      "title": "CITY CRIME RECORD BRANCH",
+      "url": "https://bcp.karnataka.gov.in/9/city-crime-record-bureau/en"
+    },
+    {
+      "title": "CYBER CRIME POLICE STATION",
+      "url": "https://bcp.karnataka.gov.in/10/cyber-crime-police-station-/en"
+    },
+    {
+      "title": "Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in/Webform/Index.aspx"
+    },
+    {
+      "title": "RTI Statistics",
+      "url": "https://bcp.karnataka.gov.in/45/rti-statistics/en"
+    },
+    {
+      "title": "CENTRAL CRIME BRANCH",
+      "url": "https://bcp.karnataka.gov.in/8/central-crime-branch/en"
+    },
+    {
+      "title": "CITY CRIME RECORD BRANCH",
+      "url": "https://bcp.karnataka.gov.in/9/city-crime-record-bureau/en"
+    },
+    {
+      "title": "CYBER CRIME POLICE STATION",
+      "url": "https://bcp.karnataka.gov.in/10/cyber-crime-police-station-/en"
+    },
+    {
+      "title": "Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in/Webform/Index.aspx"
+    },
+    {
+      "title": "RTI Statistics",
+      "url": "https://bcp.karnataka.gov.in/45/rti-statistics/en"
+    },
+    {
+      "title": "12 6 months ago Notification regarding Recruitment of  Cyber Security Analyst and Digital Forensic Analyst Posts. - 2026",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1779085428.pdf"
+    },
+    {
+      "title": "Notification regarding Recruitment of  Cyber Security Analyst and Digital Forensic Analyst Posts. - 2026",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1779085428.pdf"
+    },
+    {
+      "title": "Notification regarding Recruitment of  Cyber Security Analyst and Digital Forensic Analyst Posts - 2026",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1779085428.pdf"
+    },
+    {
+      "title": "Cyber Analyst Application",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1705738632.pdf"
+    },
+    {
+      "title": "Cyber Analyst Corrigizdum",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1705649890.pdf"
+    },
+    {
+      "title": "Cybercrime Incident Report",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1652083404.pdf"
+    },
+    {
+      "title": "Women Help desk Officers",
+      "url": "https://bcp.karnataka.gov.in/38/women-help-desk-officers/en"
+    },
+    {
+      "title": "Cyber Safety",
+      "url": "https://bcp.karnataka.gov.in/uploads/media_to_upload1651921487.pdf"
+    },
+    {
+      "title": "Women Related Laws",
+      "url": "https://bcp.karnataka.gov.in/english#."
+    },
+    {
+      "title": "Women's Commission",
+      "url": "http://www.kscw.kar.nic.in/"
+    }
+  ],
+  "manifest": [
+    {
+      "step": "step_1_2",
+      "source": "NCRB Crime in India PDF",
+      "url": "https://www.ncrb.gov.in/uploads/files/9BCII2023Snapshots-MegaCities2.pdf",
+      "downloaded_at_utc": "2026-11-12T12:35:23Z",
+      "local_file": "data\\ncrb_pdfs\\9BCII2023Snapshots-MegaCities2.pdf",
+      "notes": "",
+      "sha256": "2b825bf84279c00c4c033fb0512fc787942cf2c7cd02d52cc88cfbcc095fec4b",
+      "size_bytes": 136894
+    },
+    {
+      "step": "step_1_2",
+      "source": "NCRB Crime in India PDF",
+      "url": "https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/ciiyearwise2022/17016097489bCII2022Snapshots-MegaCities.pdf",
+      "downloaded_at_utc": "2026-11-12T12:35:24Z",
+      "local_file": "data\\ncrb_pdfs\\17016097489bCII2022Snapshots-MegaCities.pdf",
+      "notes": "",
+      "sha256": "dc5c80d78cbc80a0b92c6615cb1dd7f1716d856efa0df867d5a43b1d84d53a44",
+      "size_bytes": 143504
+    },
+    {
+      "step": "step_1_2",
+      "source": "NCRB Crime in India PDF",
+      "url": "https://www.ncrb.gov.in/uploads/files/2CrimeinIndia2023PartII2.pdf",
+      "downloaded_at_utc": "2026-11-12T12:35:30Z",
+      "local_file": "data\\ncrb_pdfs\\2CrimeinIndia2023PartII2.pdf",
+      "notes": "",
+      "sha256": "e846cd4a27b9f867d50d261390e65d4efb598b0ecefba1f8da079fdf86e9dff6",
+      "size_bytes": 17734952
+    },
+    {
+      "step": "step_5",
+      "source": "Bengaluru City Police Portal",
+      "url": "https://bcp.karnataka.gov.in/english",
+      "downloaded_at_utc": "2026-11-12T12:37:02Z",
+      "local_file": null,
+      "notes": "Checked live portal"
+    }
+  ]
+}

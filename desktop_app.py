@@ -715,12 +715,17 @@ def make_handler(state: DesktopBackendState) -> type[http.server.SimpleHTTPReque
         def log_message(self, format: str, *args: Any) -> None:  # noqa: A002
             return
 
+        def end_headers(self) -> None:
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
+            super().end_headers()
+
         def _send_json(self, status: int, payload: Dict[str, Any]) -> None:
             body = json.dumps(payload).encode("utf-8")
             self.send_response(status)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(body)
 
@@ -774,6 +779,7 @@ def make_handler(state: DesktopBackendState) -> type[http.server.SimpleHTTPReque
                     "summary": summary,
                     "court_summary": court_summary,
                     "port": state.port,
+                    "local_ip": get_local_ip(),
                 })
                 return
 
@@ -881,7 +887,7 @@ def make_handler(state: DesktopBackendState) -> type[http.server.SimpleHTTPReque
                 return
 
             if parsed.path == "/api/open-external-map":
-                launch_app_window(f"http://127.0.0.1:{state.port}/bangalore_map.html")
+                launch_app_window(f"http://127.0.0.1:{state.port}/bangalore_map.html?v=compass_only")
                 self._send_json(200, {"ok": True})
                 return
 
@@ -895,19 +901,30 @@ def make_handler(state: DesktopBackendState) -> type[http.server.SimpleHTTPReque
     return DesktopRequestHandler
 
 
+def get_local_ip() -> str:
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
+
 def start_desktop_server(state: DesktopBackendState, preferred_port: int = 8050) -> socketserver.TCPServer:
     handler_cls = make_handler(state)
     socketserver.ThreadingMixIn.daemon_threads = True
     for port in range(preferred_port, preferred_port + 30):
         try:
             socketserver.TCPServer.allow_reuse_address = True
-            srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), handler_cls)
+            srv = http.server.ThreadingHTTPServer(("0.0.0.0", port), handler_cls)
             state.port = port
             threading.Thread(target=srv.serve_forever, daemon=True).start()
             return srv
         except OSError:
             continue
-    raise RuntimeError("No free port available on 127.0.0.1")
+    raise RuntimeError("No free port available on 0.0.0.0")
 
 
 def main() -> None:
@@ -918,8 +935,16 @@ def main() -> None:
 
     state = DesktopBackendState()
     srv = start_desktop_server(state, preferred_port=args.port)
+    local_ip = get_local_ip()
     url = f"http://127.0.0.1:{state.port}/desktop_ui.html"
-    print(f"WSZM Desktop UI running at {url}")
+    mobile_full_url = f"http://{local_ip}:{state.port}/"
+    mobile_map_url = f"http://{local_ip}:{state.port}/bangalore_map.html?v=compass_only"
+    print("=" * 66)
+    print("WSZM Urban Safety & Navigation Suite is Running:")
+    print(f"  • PC Desktop URL:              {url}")
+    print(f"  • Android Full Suite (Wi-Fi):  {mobile_full_url}")
+    print(f"  • Android Standalone Map:      {mobile_map_url}")
+    print("=" * 66)
 
     if args.no_launch:
         try:

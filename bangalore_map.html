@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bengaluru Map — Google Maps Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>WSZM — Bengaluru Live Navigation &amp; Safety Map</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <link rel="icon" href="/assets/wszm_icon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/assets/wszm_logo.svg" />
   <link rel="alternate icon" type="image/png" href="/assets/wszm_logo.png" />
@@ -13,7 +21,33 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: 'Roboto', Arial, sans-serif; overflow: hidden; background: #e5e3df; }
 
-    #map { width: 100%; height: 100%; z-index: 1; }
+    #map {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150vmax;
+      height: 150vmax;
+      min-width: 150vmax;
+      min-height: 150vmax;
+      transform: translate(-50%, -50%);
+      transform-origin: 50% 50%;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    /* Keep Google logo and attribution pinned cleanly to visible viewport corners */
+    .gm-style .gm-style-cc {
+      position: fixed !important;
+      bottom: 2px !important;
+      right: 5px !important;
+      z-index: 50 !important;
+    }
+    .gm-style a[href*="google.com"] {
+      position: fixed !important;
+      bottom: 4px !important;
+      left: 8px !important;
+      z-index: 50 !important;
+    }
 
     /* ── FLOATING GOOGLE MAPS SEARCH BAR ── */
     .gmaps-search-container {
@@ -498,6 +532,90 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* ── MAP ROTATION & COMPASS CONTROLS (GOOGLE MAPS STYLE) ── */
+    .rotate-ctrl-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .compass-btn {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background 0.15s;
+    }
+    .compass-btn:hover { background: #f1f3f4; }
+    .compass-dial {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .compass-needle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+    }
+    .compass-needle-n {
+      top: 1px;
+      border-bottom: 10px solid #ea4335;
+    }
+    .compass-needle-s {
+      bottom: 1px;
+      border-top: 10px solid #70757a;
+    }
+    .compass-pivot {
+      width: 3.5px;
+      height: 3.5px;
+      border-radius: 50%;
+      background: #202124;
+      z-index: 2;
+    }
+    .compass-n-label {
+      position: absolute;
+      top: -3px;
+      font-size: 7.5px;
+      font-weight: 800;
+      color: #ea4335;
+      font-family: Arial, sans-serif;
+    }
+    .heading-badge {
+      position: absolute;
+      bottom: 275px;
+      right: 12px;
+      z-index: 700;
+      background: rgba(32, 33, 36, 0.88);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      user-select: none;
+      transition: all 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .heading-badge:hover {
+      background: #1a73e8;
     }
 
     /* ── CLEAN GOOGLE INFOWINDOW POPUP ── */
@@ -1045,6 +1163,73 @@
       .filter-pills { max-width: calc(100vw - 24px); }
       .directions-panel { width: calc(100vw - 24px); max-height: 75vh; }
     }
+
+    /* ── SLIDE TO SIDE SYSTEM FOR SEARCH & DIRECTIONS BARS ── */
+    .directions-panel {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .directions-panel.slid-away {
+      transform: translateX(calc(-100% - 30px)) !important;
+      pointer-events: none;
+    }
+
+    .search-box-wrap {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    }
+    .search-box-wrap.slid-away {
+      transform: translateX(calc(-100% - 30px)) !important;
+      pointer-events: none;
+      max-width: 0 !important;
+      margin-right: -10px !important;
+      opacity: 0;
+    }
+
+    .gmaps-search-container {
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body.directions-open.directions-slid-away .gmaps-search-container {
+      left: 140px !important;
+    }
+    body.search-slid-away .gmaps-search-container {
+      left: 130px !important;
+    }
+
+    /* DOCKED RE-OPEN SLIDE BUTTONS ON THE LEFT EDGE */
+    .dir-docked-open-tab, .search-docked-open-tab {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 14px;
+      z-index: 2500;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #202124;
+      border: 1.5px solid #dadce0;
+      border-left: none;
+      border-radius: 0 24px 24px 0;
+      padding: 10px 16px 10px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0,0,0,0.12);
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dir-docked-open-tab:hover, .dir-docked-open-tab:active,
+    .search-docked-open-tab:hover, .search-docked-open-tab:active {
+      background: #f8fafd;
+      box-shadow: 0 6px 24px rgba(26, 115, 232, 0.32);
+      color: #1a73e8;
+      padding-left: 16px;
+      transform: scale(1.04);
+    }
+
+    .dir-docked-open-tab.visible, .search-docked-open-tab.visible {
+      display: inline-flex !important;
+    }
   </style>
 </head>
 <body class="mode-sat">
@@ -1052,8 +1237,8 @@
   <div id="map"></div>
 
   <!-- FLOATING GOOGLE MAPS SEARCH & ZONE PILLS -->
-  <div class="gmaps-search-container">
-    <div class="search-box-wrap">
+  <div class="gmaps-search-container" id="gmapsSearchContainer">
+    <div class="search-box-wrap" id="searchBoxWrap">
       <div class="search-box">
         <button class="icon-btn" title="Menu" onclick="toggleGmapsMenu()"><i class="fas fa-bars"></i></button>
         <input id="searchInput" type="text" placeholder="Search Bengaluru places, roads, layouts…" autocomplete="off" />
@@ -1061,6 +1246,7 @@
         <div class="search-divider"></div>
         <button class="icon-btn" title="Search" onclick="runSearch()"><i class="fas fa-search" style="color:#1a73e8;"></i></button>
         <button class="icon-btn" title="Directions" onclick="openDirectionsPanel()"><i class="fas fa-diamond-turn-right" style="color:#1a73e8; font-size:17px;"></i></button>
+        <button class="icon-btn" title="Slide search to side" onclick="toggleMainSearchSlide(true)" style="color:#5f6368;" aria-label="Slide to side"><i class="fas fa-chevron-left" style="font-size:13px;"></i></button>
       </div>
       <div class="autocomplete-list" id="autocompleteList"></div>
     </div>
@@ -1076,6 +1262,20 @@
     </div>
   </div>
 
+  <!-- DOCKED RE-OPEN SLIDE BUTTON FOR MAIN SEARCH -->
+  <button type="button" class="search-docked-open-tab" id="searchDockedOpenTab" onclick="toggleMainSearchSlide(false)" title="Touch to open Search" aria-label="Touch to open Search">
+    <i class="fas fa-search" style="color:#1a73e8;font-size:15px;"></i>
+    <span style="font-size:13.5px;font-weight:700;color:#1a73e8;">Search</span>
+    <i class="fas fa-chevron-right" style="font-size:12px;color:#5f6368;margin-left:2px;"></i>
+  </button>
+
+  <!-- DOCKED RE-OPEN SLIDE BUTTON FOR DIRECTIONS -->
+  <button type="button" class="dir-docked-open-tab" id="dirDockedOpenTab" onclick="toggleDirectionsSlide(false)" title="Touch to open Directions" aria-label="Touch to open Directions">
+    <i class="fas fa-diamond-turn-right" style="color:#1a73e8;font-size:15px;"></i>
+    <span style="font-size:13.5px;font-weight:700;color:#1a73e8;">Directions</span>
+    <i class="fas fa-chevron-right" style="font-size:12px;color:#5f6368;margin-left:2px;"></i>
+  </button>
+
   <!-- GOOGLE MAPS SOURCE-TO-DESTINATION DIRECTIONS PANEL -->
   <div class="directions-panel" id="directionsPanel" aria-label="Directions">
     <div class="dir-modes-bar">
@@ -1087,7 +1287,12 @@
         <button class="dir-mode-btn" data-mode="WALKING" title="Walking" onclick="setDirectionsMode('WALKING', this)"><i class="fas fa-person-walking"></i></button>
         <button class="dir-mode-btn" data-mode="BICYCLING" title="Cycling" onclick="setDirectionsMode('BICYCLING', this)"><i class="fas fa-bicycle"></i></button>
       </div>
-      <button class="icon-btn" title="Close directions" onclick="closeDirectionsPanel()"><i class="fas fa-times"></i></button>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <button type="button" class="icon-btn" title="Slide directions to side" onclick="toggleDirectionsSlide(true)" style="color:#5f6368;" aria-label="Slide directions to side">
+          <i class="fas fa-chevron-left" style="font-size:15px;"></i>
+        </button>
+        <button class="icon-btn" title="Close directions" onclick="closeDirectionsPanel()"><i class="fas fa-times"></i></button>
+      </div>
     </div>
 
     <div class="dir-inputs-row">
@@ -1258,6 +1463,18 @@
 
   <!-- BOTTOM-RIGHT GOOGLE MAPS CONTROLS -->
   <div class="gmaps-controls">
+    <!-- COMPASS ONLY (GOOGLE MAPS STYLE) -->
+    <div class="ctrl-card rotate-ctrl-card" id="rotateCtrlCard">
+      <button class="compass-btn" id="compassBtn" title="Map oriented North. Click to reset." onclick="resetMapOrientation()" aria-label="Compass - Reset to North">
+        <div class="compass-dial" id="compassDial">
+          <div class="compass-needle compass-needle-n"></div>
+          <div class="compass-needle compass-needle-s"></div>
+          <div class="compass-pivot"></div>
+          <span class="compass-n-label">N</span>
+        </div>
+      </button>
+    </div>
+
     <button class="sos-pill" title="Emergency SOS" onclick="document.getElementById('sosModal').classList.add('show')">SOS</button>
     <div class="ctrl-card">
       <button class="ctrl-btn" title="Your Location" onclick="goToMyLocation()"><i class="fas fa-crosshairs"></i></button>
@@ -1268,6 +1485,8 @@
       <button class="ctrl-btn" title="Zoom out" onclick="zoomMapBy(-1)"><i class="fas fa-minus"></i></button>
     </div>
   </div>
+
+  <div class="heading-badge" id="headingBadge" style="display:none;" onclick="resetMapOrientation()" title="Click to reset orientation to North">0° N</div>
 
   <!-- SOS MODAL -->
   <div class="sos-modal" id="sosModal">
@@ -1373,8 +1592,193 @@
     function zoomMapBy(delta) {
       if (!gMap) return;
       const current = typeof gMap.getZoom === 'function' ? gMap.getZoom() : 12;
-      gMap.setZoom(current + delta);
+      const targetZoom = Math.max(3, Math.min(21, current + delta));
+      gMap.setZoom(targetZoom);
     }
+
+    // ═══════════════════════════════════════════════════════════════
+    // MAP ROTATION, COMPASS & 3D PERSPECTIVE SYSTEM (GOOGLE MAPS STYLE)
+    // ═══════════════════════════════════════════════════════════════
+    let currentHeading = 0;
+    let currentTilt = 0;
+
+    function applyMapRotation(deg, withTransition = true) {
+      currentHeading = ((Math.round(deg) % 360) + 360) % 360;
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.style.transition = withTransition ? 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)' : 'none';
+        const tiltCss = currentTilt > 15 ? `perspective(1000px) rotateX(${currentTilt}deg) ` : '';
+        mapEl.style.transform = `translate(-50%, -50%) ${tiltCss}rotate(${currentHeading}deg)`;
+        mapEl.style.transformOrigin = '50% 50%';
+      }
+
+      updateCompassUI();
+    }
+
+    function setMapHeading(deg) {
+      applyMapRotation(deg, true);
+    }
+
+    function setMapTilt(deg) {
+      currentTilt = Math.max(0, Math.min(50, Math.round(deg)));
+      applyMapRotation(currentHeading, true);
+    }
+
+    function rotateMapBy(deltaDeg) {
+      applyMapRotation(currentHeading + deltaDeg, true);
+    }
+
+    function resetMapOrientation() {
+      currentHeading = 0;
+      currentTilt = 0;
+      applyMapRotation(0, true);
+    }
+
+    function toggle3DTilt() {
+      if (currentTilt > 15) {
+        setMapTilt(0);
+      } else {
+        setMapTilt(45);
+      }
+    }
+
+    function updateCompassUI() {
+      const dial = document.getElementById('compassDial');
+      const headingBadge = document.getElementById('headingBadge');
+      const compassBtn = document.getElementById('compassBtn');
+
+      if (dial) {
+        dial.style.transform = `rotate(${-currentHeading}deg)`;
+      }
+
+      if (compassBtn) {
+        compassBtn.title = currentHeading === 0 
+          ? 'Map oriented North. Click to reset.' 
+          : `Bearing: ${Math.round(currentHeading)}°. Click to reset to North.`;
+      }
+
+      if (headingBadge) {
+        if (currentHeading === 0 && currentTilt === 0) {
+          headingBadge.style.display = 'none';
+        } else {
+          headingBadge.style.display = 'inline-flex';
+          const cardinals = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+          const card = cardinals[Math.round(currentHeading / 45) % 8];
+          headingBadge.textContent = `${Math.round(currentHeading)}° ${card}${currentTilt > 15 ? ' · 3D' : ''}`;
+        }
+      }
+    }
+
+    // Touch & Mouse Gesture Controller:
+    // Two-Finger Gesture Controller (Google Maps Style Simultaneous Rotate & Zoom)
+    (function initMapGestureController() {
+      let touchStartDist = 0;
+      let touchStartAngle = 0;
+      let touchStartHeading = 0;
+      let isTwoFingerTouch = false;
+
+      const mapContainer = document.getElementById('map');
+      if (!mapContainer) return;
+
+      mapContainer.addEventListener('touchstart', e => {
+        if (!e.touches || e.touches.length !== 2) {
+          isTwoFingerTouch = false;
+          return;
+        }
+
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        const dx = t2.clientX - t1.clientX;
+        const dy = t2.clientY - t1.clientY;
+        touchStartDist = Math.hypot(dx, dy);
+        touchStartAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+        touchStartHeading = currentHeading;
+        isTwoFingerTouch = true;
+      }, { passive: true });
+
+      mapContainer.addEventListener('touchmove', e => {
+        if (!isTwoFingerTouch || !e.touches || e.touches.length !== 2) {
+          return;
+        }
+
+        const t1 = e.touches[0];
+        const t2 = e.touches[1];
+        const dx = t2.clientX - t1.clientX;
+        const dy = t2.clientY - t1.clientY;
+        const currentAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        let angleDelta = currentAngle - touchStartAngle;
+        while (angleDelta > 180) angleDelta -= 360;
+        while (angleDelta < -180) angleDelta += 360;
+
+        // Rotate in the natural direction of finger movement (clockwise = clockwise)
+        // 5-degree deadband threshold avoids micro-jitter/slippery floating feel
+        if (Math.abs(angleDelta) >= 5) {
+          applyMapRotation(touchStartHeading + angleDelta, false);
+        }
+      }, { passive: true });
+
+      mapContainer.addEventListener('touchend', e => {
+        if (!e.touches || e.touches.length < 2) {
+          if (isTwoFingerTouch) {
+            // Magnetic snap to North if within 6 degrees of true North
+            if (Math.abs(currentHeading) < 6 || Math.abs(currentHeading - 360) < 6) {
+              currentHeading = 0;
+            }
+            applyMapRotation(currentHeading, true);
+          }
+          isTwoFingerTouch = false;
+          touchStartDist = 0;
+        }
+      }, { passive: true });
+
+      // Desktop: Shift + Drag OR Right-Click Drag to rotate & tilt
+      let isMouseRotating = false;
+      let startMouseX = 0;
+      let startMouseY = 0;
+      let mouseStartHeading = 0;
+      let mouseStartTilt = 0;
+
+      window.addEventListener('mousedown', e => {
+        const rect = mapContainer.getBoundingClientRect();
+        const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        if (!inside) return;
+        if (e.target.closest('.gmaps-controls, .layers-widget, .gmaps-search-container, .directions-panel, .gmaps-menu-drawer, .dir-docked-open-tab, .search-docked-open-tab, .sos-modal, .menu-modal, .heading-badge')) return;
+
+        if (e.shiftKey || e.button === 2) {
+          isMouseRotating = true;
+          startMouseX = e.clientX;
+          startMouseY = e.clientY;
+          mouseStartHeading = currentHeading;
+          mouseStartTilt = currentTilt;
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener('mousemove', e => {
+        if (!isMouseRotating) return;
+        const diffX = e.clientX - startMouseX;
+        const diffY = e.clientY - startMouseY;
+        const newHeading = mouseStartHeading + diffX * 0.35;
+        const newTilt = mouseStartTilt - diffY * 0.25;
+        currentTilt = Math.max(0, Math.min(50, Math.round(newTilt)));
+        applyMapRotation(newHeading, false);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isMouseRotating) {
+          isMouseRotating = false;
+          if (Math.abs(currentHeading) < 6 || Math.abs(currentHeading - 360) < 6) {
+            currentHeading = 0;
+          }
+          applyMapRotation(currentHeading, true);
+        }
+      });
+
+      window.addEventListener('contextmenu', e => {
+        if (isMouseRotating) e.preventDefault();
+      });
+    })();
 
     window.addEventListener('keydown', e => {
       const tag = (e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '');
@@ -1383,6 +1787,20 @@
         zoomMapBy(-1);
       } else if (e.key === '+' || e.key === '=') {
         zoomMapBy(1);
+      } else if (e.shiftKey && e.key === 'ArrowLeft') {
+        e.preventDefault();
+        rotateMapBy(-15);
+      } else if (e.shiftKey && e.key === 'ArrowRight') {
+        e.preventDefault();
+        rotateMapBy(15);
+      } else if (e.shiftKey && e.key === 'ArrowUp') {
+        e.preventDefault();
+        setMapTilt(currentTilt + 15);
+      } else if (e.shiftKey && e.key === 'ArrowDown') {
+        e.preventDefault();
+        setMapTilt(currentTilt - 15);
+      } else if (e.key === 'r' || e.key === 'R') {
+        resetMapOrientation();
       }
     });
 
@@ -2313,8 +2731,18 @@
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: BENGALURU_CENTER,
           zoom: 12,
-          minZoom: 2,
+          minZoom: 3,
           maxZoom: 21,
+          isFractionalZoomEnabled: true,
+          restriction: {
+            latLngBounds: {
+              north: 85,
+              south: -85,
+              west: -180,
+              east: 180
+            },
+            strictBounds: true
+          },
           mapTypeId: currentBase === 'terrain' ? google.maps.MapTypeId.TERRAIN : google.maps.MapTypeId.HYBRID,
           disableDefaultUI: true,
           scaleControl: true,
@@ -2322,6 +2750,26 @@
           scrollwheel: true,
           gestureHandling: 'greedy',
           keyboardShortcuts: true
+        });
+
+        window.addEventListener('resize', () => {
+          if (gMap && window.google && google.maps) {
+            google.maps.event.trigger(gMap, 'resize');
+          }
+          if (currentHeading !== 0 || currentTilt !== 0) {
+            applyMapRotation(currentHeading, false);
+          }
+        });
+
+        window.addEventListener('orientationchange', () => {
+          setTimeout(() => {
+            if (gMap && window.google && google.maps) {
+              google.maps.event.trigger(gMap, 'resize');
+            }
+            if (currentHeading !== 0 || currentTilt !== 0) {
+              applyMapRotation(currentHeading, false);
+            }
+          }, 150);
         });
 
         googleInfoWindow = new google.maps.InfoWindow();
@@ -3359,11 +3807,73 @@
     dirOriginInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); searchDirField('origin'); } });
     dirDestInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); searchDirField('dest'); } });
 
+    function toggleDirectionsSlide(slideAway) {
+      const panel = document.getElementById('directionsPanel');
+      const openTab = document.getElementById('dirDockedOpenTab');
+      const searchTab = document.getElementById('searchDockedOpenTab');
+      if (!panel) return;
+      const shouldSlideAway = typeof slideAway === 'boolean' ? slideAway : !panel.classList.contains('slid-away');
+      if (shouldSlideAway) {
+        panel.classList.add('slid-away');
+        document.body.classList.add('directions-slid-away');
+        if (openTab) openTab.classList.add('visible');
+        if (searchTab) searchTab.classList.remove('visible');
+      } else {
+        panel.classList.remove('slid-away');
+        panel.classList.add('open');
+        panel.style.display = 'flex';
+        document.body.classList.remove('directions-slid-away');
+        document.body.classList.add('directions-open');
+        if (openTab) openTab.classList.remove('visible');
+        if (searchTab) searchTab.classList.remove('visible');
+      }
+    }
+
+    function toggleMainSearchSlide(slideAway) {
+      const wrap = document.getElementById('searchBoxWrap') || document.querySelector('.search-box-wrap');
+      const cont = document.getElementById('gmapsSearchContainer');
+      const openTab = document.getElementById('searchDockedOpenTab');
+      const dirTab = document.getElementById('dirDockedOpenTab');
+      const target = wrap || cont;
+      if (!target) return;
+      const shouldSlideAway = typeof slideAway === 'boolean' ? slideAway : !target.classList.contains('slid-away');
+      if (shouldSlideAway) {
+        target.classList.add('slid-away');
+        document.body.classList.add('search-slid-away');
+        if (openTab) openTab.classList.add('visible');
+        if (dirTab) dirTab.classList.remove('visible');
+      } else {
+        target.classList.remove('slid-away');
+        if (cont) cont.classList.remove('slid-away');
+        if (wrap) {
+          wrap.classList.remove('slid-away');
+          wrap.style.display = '';
+        }
+        document.body.classList.remove('search-slid-away');
+        document.body.classList.remove('directions-open');
+        const dirP = document.getElementById('directionsPanel');
+        if (dirP) {
+          dirP.classList.remove('open', 'slid-away');
+          dirP.style.display = 'none';
+        }
+        if (openTab) openTab.classList.remove('visible');
+        if (dirTab) dirTab.classList.remove('visible');
+      }
+    }
+
     function openDirectionsPanel(destPoint) {
       acList.classList.remove('show');
       if (window.innerWidth <= 720) toggleDrawer(false);
       dirPanel.classList.add('open');
+      dirPanel.classList.remove('slid-away');
+      dirPanel.style.display = 'flex';
+      document.body.classList.remove('directions-slid-away');
+      document.body.classList.remove('search-slid-away');
       document.body.classList.add('directions-open');
+      const dirTab = document.getElementById('dirDockedOpenTab');
+      const searchTab = document.getElementById('searchDockedOpenTab');
+      if (dirTab) dirTab.classList.remove('visible');
+      if (searchTab) searchTab.classList.remove('visible');
 
       if (destPoint && typeof destPoint.lat === 'number' && typeof destPoint.lng === 'number') {
         dirDest = { name: destPoint.name, lat: destPoint.lat, lng: destPoint.lng };
@@ -3386,9 +3896,90 @@
 
     function closeDirectionsPanel() {
       dirPanel.classList.remove('open');
+      dirPanel.classList.remove('slid-away');
+      dirPanel.style.display = 'none';
+      document.body.classList.remove('directions-slid-away');
       document.body.classList.remove('directions-open');
+      document.body.classList.remove('search-slid-away');
+      const cont = document.getElementById('gmapsSearchContainer');
+      const wrap = document.getElementById('searchBoxWrap') || document.querySelector('.search-box-wrap');
+      if (cont) cont.classList.remove('slid-away');
+      if (wrap) {
+        wrap.classList.remove('slid-away');
+        wrap.style.display = '';
+      }
+      const dirTab = document.getElementById('dirDockedOpenTab');
+      const searchTab = document.getElementById('searchDockedOpenTab');
+      if (dirTab) dirTab.classList.remove('visible');
+      if (searchTab) searchTab.classList.remove('visible');
       clearRenderedRoute();
     }
+
+    // Touch swipe gestures to slide search panel to side on mobile
+    (function initPanelSwipeGestures() {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      const dirP = document.getElementById('directionsPanel');
+      if (dirP) {
+        dirP.addEventListener('touchstart', e => {
+          if (!e.touches || !e.touches.length) return;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        dirP.addEventListener('touchend', e => {
+          if (!e.changedTouches || !e.changedTouches.length) return;
+          const diffX = e.changedTouches[0].clientX - touchStartX;
+          const diffY = e.changedTouches[0].clientY - touchStartY;
+          // Swiping left by > 70px slides panel to side
+          if (diffX < -70 && Math.abs(diffY) < 60) {
+            toggleDirectionsSlide(true);
+          }
+        }, { passive: true });
+      }
+
+      const searchW = document.getElementById('searchBoxWrap');
+      if (searchW) {
+        searchW.addEventListener('touchstart', e => {
+          if (!e.touches || !e.touches.length) return;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        searchW.addEventListener('touchend', e => {
+          if (!e.changedTouches || !e.changedTouches.length) return;
+          const diffX = e.changedTouches[0].clientX - touchStartX;
+          const diffY = e.changedTouches[0].clientY - touchStartY;
+          // Swiping left by > 70px slides search to side
+          if (diffX < -70 && Math.abs(diffY) < 60) {
+            toggleMainSearchSlide(true);
+          }
+        }, { passive: true });
+      }
+
+      // Edge swipe right from left margin (< 45px) opens whichever panel was slid away
+      window.addEventListener('touchstart', e => {
+        if (!e.touches || !e.touches.length) return;
+        if (e.touches[0].clientX <= 45) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+      window.addEventListener('touchend', e => {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        if (touchStartX <= 45) {
+          const diffX = e.changedTouches[0].clientX - touchStartX;
+          const diffY = e.changedTouches[0].clientY - touchStartY;
+          if (diffX > 60 && Math.abs(diffY) < 60) {
+            const dirTab = document.getElementById('dirDockedOpenTab');
+            const searchTab = document.getElementById('searchDockedOpenTab');
+            if (dirTab && dirTab.classList.contains('visible')) {
+              toggleDirectionsSlide(false);
+            } else if (searchTab && searchTab.classList.contains('visible')) {
+              toggleMainSearchSlide(false);
+            }
+          }
+        }
+      }, { passive: true });
+    })();
 
     function setDirectionsMode(mode, btn) {
       dirMode = mode;
@@ -4717,7 +5308,15 @@
             document.querySelectorAll('.dir-tod-btn').forEach(b => b.classList.toggle('active', b.dataset.tod === msg.tod));
           }
           dirPanel.classList.add('open');
+          dirPanel.classList.remove('slid-away');
+          dirPanel.style.display = 'flex';
+          document.body.classList.remove('directions-slid-away');
+          document.body.classList.remove('search-slid-away');
           document.body.classList.add('directions-open');
+          const dirTab = document.getElementById('dirDockedOpenTab');
+          const searchTab = document.getElementById('searchDockedOpenTab');
+          if (dirTab) dirTab.classList.remove('visible');
+          if (searchTab) searchTab.classList.remove('visible');
           document.getElementById('dirSuggestionsList').innerHTML = '';
           calculateDirectionsRoute(true);
         } finally {

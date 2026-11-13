@@ -1,0 +1,19 @@
+{
+  "name": "WSZM — Urban Safety & Navigation",
+  "short_name": "WSZM",
+  "description": "Live GPS navigation, 5-factor safety scoring, and police jurisdiction discovery for Bengaluru.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1120",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "./assets/wszm_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

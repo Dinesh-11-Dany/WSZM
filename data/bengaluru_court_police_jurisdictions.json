@@ -1,0 +1,934 @@
+{
+  "source": "https://bengaluru.dcourts.gov.in/police-station-wise-magistrate/",
+  "notification_reference": "Office of the CMM, Bengaluru \u2014 Notification No. ADM-I/04/2024 (Annexure-A)",
+  "total_stations": 103,
+  "jurisdictions": [
+    {
+      "ps_name": "Mico Layout PS",
+      "court": "CMM Bengaluru",
+      "sub_division": "Mico Layout Sub-division",
+      "division": "South-East",
+      "lat": 12.9148,
+      "lng": 77.6105,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Tilaknagar PS",
+      "court": "CMM Bengaluru",
+      "sub_division": "Mico Layout Sub-division",
+      "division": "South",
+      "lat": 12.9285,
+      "lng": 77.5975,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Bommanahalli PS",
+      "court": "CMM Bengaluru",
+      "sub_division": "Mico Layout Sub-division",
+      "division": "South-East",
+      "lat": 12.9038,
+      "lng": 77.6255,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Suddagunte Palya PS",
+      "court": "CMM Bengaluru",
+      "sub_division": "Mico Layout Sub-division",
+      "division": "South-East",
+      "lat": 12.9262,
+      "lng": 77.608,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Seshadripuram PS",
+      "court": "I Addl CMM",
+      "sub_division": "Seshadripuram Sub-division",
+      "division": "Central",
+      "lat": 12.9902,
+      "lng": 77.5788,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "High Grounds PS",
+      "court": "I Addl CMM",
+      "sub_division": "Seshadripuram Sub-division",
+      "division": "Central",
+      "lat": 12.9862,
+      "lng": 77.5855,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Vyalikaval PS",
+      "court": "I Addl CMM",
+      "sub_division": "Seshadripuram Sub-division",
+      "division": "Central",
+      "lat": 12.9995,
+      "lng": 77.5792,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Sadashivanagar PS",
+      "court": "I Addl CMM",
+      "sub_division": "Seshadripuram Sub-division",
+      "division": "Central",
+      "lat": 13.0068,
+      "lng": 77.5812,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Central Crime Branch (CCB)",
+      "court": "I Addl CMM",
+      "sub_division": "Special Units",
+      "division": "Special Crime",
+      "lat": 12.9642,
+      "lng": 77.5878,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Jayanagar PS",
+      "court": "II Addl CMM",
+      "sub_division": "Jayanagar Sub-division",
+      "division": "South",
+      "lat": 12.9296,
+      "lng": 77.5835,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Siddapura PS",
+      "court": "II Addl CMM",
+      "sub_division": "Jayanagar Sub-division",
+      "division": "South",
+      "lat": 12.9372,
+      "lng": 77.5895,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "JP Nagar PS",
+      "court": "II Addl CMM",
+      "sub_division": "Jayanagar Sub-division",
+      "division": "South",
+      "lat": 12.9088,
+      "lng": 77.586,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Banashankari PS",
+      "court": "II Addl CMM",
+      "sub_division": "Jayanagar Sub-division",
+      "division": "South",
+      "lat": 12.9255,
+      "lng": 77.5582,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Basavanagudi PS",
+      "court": "II Addl CMM",
+      "sub_division": "Jayanagar Sub-division",
+      "division": "South",
+      "lat": 12.9412,
+      "lng": 77.575,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Upparpet PS (Majestic)",
+      "court": "V Addl CMM",
+      "sub_division": "Chikkapet Sub-division",
+      "division": "West",
+      "lat": 12.9776,
+      "lng": 77.5735,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "City Market / Chickpet PS",
+      "court": "V Addl CMM",
+      "sub_division": "Chikkapet Sub-division",
+      "division": "West",
+      "lat": 12.9652,
+      "lng": 77.5758,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Kalasipalya PS",
+      "court": "V Addl CMM",
+      "sub_division": "Chikkapet Sub-division",
+      "division": "West",
+      "lat": 12.961,
+      "lng": 77.5802,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Cottonpet PS",
+      "court": "V Addl CMM",
+      "sub_division": "Chikkapet Sub-division",
+      "division": "West",
+      "lat": 12.9695,
+      "lng": 77.568,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Chamarajpet PS",
+      "court": "V Addl CMM",
+      "sub_division": "Chikkapet Sub-division",
+      "division": "West",
+      "lat": 12.9575,
+      "lng": 77.5615,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Halasuru Gate PS",
+      "court": "VI Addl CMM",
+      "sub_division": "Halasuru Gate Sub-division",
+      "division": "Central",
+      "lat": 12.9692,
+      "lng": 77.5878,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Wilson Garden PS",
+      "court": "VI Addl CMM",
+      "sub_division": "Halasuru Gate Sub-division",
+      "division": "Central",
+      "lat": 12.9482,
+      "lng": 77.5948,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Sampangirama Nagar PS",
+      "court": "VI Addl CMM",
+      "sub_division": "Halasuru Gate Sub-division",
+      "division": "Central",
+      "lat": 12.9658,
+      "lng": 77.592,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "SJ Park PS",
+      "court": "VI Addl CMM",
+      "sub_division": "Halasuru Gate Sub-division",
+      "division": "Central",
+      "lat": 12.9672,
+      "lng": 77.5852,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Yelahanka PS",
+      "court": "VII Addl CMM",
+      "sub_division": "Yelahanka Sub-division",
+      "division": "North-East",
+      "lat": 13.1005,
+      "lng": 77.5965,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Yelahanka New Town PS",
+      "court": "VII Addl CMM",
+      "sub_division": "Yelahanka Sub-division",
+      "division": "North-East",
+      "lat": 13.098,
+      "lng": 77.5855,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Kodigehalli PS",
+      "court": "VII Addl CMM",
+      "sub_division": "Yelahanka Sub-division",
+      "division": "North-East",
+      "lat": 13.0565,
+      "lng": 77.588,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Vidyaranyapura PS",
+      "court": "VII Addl CMM",
+      "sub_division": "Yelahanka Sub-division",
+      "division": "North-East",
+      "lat": 13.0825,
+      "lng": 77.562,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "JC Nagar PS",
+      "court": "VIII Addl CMM",
+      "sub_division": "JC Nagar Sub-division",
+      "division": "North",
+      "lat": 13.0075,
+      "lng": 77.5935,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Sanjay Nagar PS",
+      "court": "VIII Addl CMM",
+      "sub_division": "JC Nagar Sub-division",
+      "division": "North",
+      "lat": 13.0365,
+      "lng": 77.576,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "RT Nagar PS",
+      "court": "VIII Addl CMM",
+      "sub_division": "JC Nagar Sub-division",
+      "division": "North",
+      "lat": 13.0225,
+      "lng": 77.5955,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Hebbal PS",
+      "court": "VIII Addl CMM",
+      "sub_division": "JC Nagar Sub-division",
+      "division": "North",
+      "lat": 13.0355,
+      "lng": 77.5965,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Bandepalya PS",
+      "court": "IX Addl CMM",
+      "sub_division": "Electronic City Sub-division",
+      "division": "South-East",
+      "lat": 12.8945,
+      "lng": 77.643,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Hulimavu PS",
+      "court": "IX Addl CMM",
+      "sub_division": "Electronic City Sub-division",
+      "division": "South-East",
+      "lat": 12.8825,
+      "lng": 77.602,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Begur PS",
+      "court": "IX Addl CMM",
+      "sub_division": "Electronic City Sub-division",
+      "division": "South-East",
+      "lat": 12.8785,
+      "lng": 77.632,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Parappana Agrahara PS",
+      "court": "IX Addl CMM",
+      "sub_division": "Electronic City Sub-division",
+      "division": "South-East",
+      "lat": 12.889,
+      "lng": 77.658,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Electronic City PS",
+      "court": "IX Addl CMM",
+      "sub_division": "Electronic City Sub-division",
+      "division": "South-East",
+      "lat": 12.845,
+      "lng": 77.665,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Halasuru PS",
+      "court": "X Addl CMM",
+      "sub_division": "Halasuru Sub-division",
+      "division": "East",
+      "lat": 12.9818,
+      "lng": 77.6242,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Indiranagar PS",
+      "court": "X Addl CMM",
+      "sub_division": "Halasuru Sub-division",
+      "division": "East",
+      "lat": 12.9781,
+      "lng": 77.6416,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Jeevanbheema Nagar PS",
+      "court": "X Addl CMM",
+      "sub_division": "Halasuru Sub-division",
+      "division": "East",
+      "lat": 12.9642,
+      "lng": 77.6542,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Byappanahalli PS",
+      "court": "X Addl CMM",
+      "sub_division": "Halasuru Sub-division",
+      "division": "East",
+      "lat": 12.992,
+      "lng": 77.648,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Frazer Town PS (Pulakeshinagar)",
+      "court": "X Addl CMM",
+      "sub_division": "Frazer Town Sub-division",
+      "division": "East",
+      "lat": 12.998,
+      "lng": 77.616,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Bharathinagar PS",
+      "court": "X Addl CMM",
+      "sub_division": "Frazer Town Sub-division",
+      "division": "East",
+      "lat": 12.986,
+      "lng": 77.614,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Commercial Street PS",
+      "court": "X Addl CMM",
+      "sub_division": "Frazer Town Sub-division",
+      "division": "East",
+      "lat": 12.9825,
+      "lng": 77.6095,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Shivajinagar PS",
+      "court": "X Addl CMM",
+      "sub_division": "Frazer Town Sub-division",
+      "division": "East",
+      "lat": 12.9854,
+      "lng": 77.6031,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Banaswadi PS",
+      "court": "XI Addl CMM",
+      "sub_division": "Banaswadi Sub-division",
+      "division": "East",
+      "lat": 13.0125,
+      "lng": 77.6512,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Hennur PS",
+      "court": "XI Addl CMM",
+      "sub_division": "Banaswadi Sub-division",
+      "division": "East",
+      "lat": 13.0385,
+      "lng": 77.643,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Ramamurthy Nagar PS",
+      "court": "XI Addl CMM",
+      "sub_division": "Banaswadi Sub-division",
+      "division": "East",
+      "lat": 13.018,
+      "lng": 77.678,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "KG Halli PS",
+      "court": "XI Addl CMM",
+      "sub_division": "KG Halli Sub-division",
+      "division": "East",
+      "lat": 13.007,
+      "lng": 77.625,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "DJ Halli PS",
+      "court": "XI Addl CMM",
+      "sub_division": "KG Halli Sub-division",
+      "division": "East",
+      "lat": 13.0015,
+      "lng": 77.6185,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Govindapura PS",
+      "court": "XI Addl CMM",
+      "sub_division": "KG Halli Sub-division",
+      "division": "East",
+      "lat": 13.023,
+      "lng": 77.621,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Vijayanagar PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.9715,
+      "lng": 77.5335,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Magadi Road PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.974,
+      "lng": 77.549,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "KP Agrahara PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.972,
+      "lng": 77.556,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Basaveshwaranagar PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.989,
+      "lng": 77.538,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Kamakshipalya PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.986,
+      "lng": 77.525,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Govindarajanagar PS",
+      "court": "XXIV ACMM",
+      "sub_division": "Vijayanagar Sub-division",
+      "division": "West",
+      "lat": 12.978,
+      "lng": 77.532,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Marathahalli PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Marathahalli Sub-division",
+      "division": "Whitefield",
+      "lat": 12.9562,
+      "lng": 77.701,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "HAL PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Marathahalli Sub-division",
+      "division": "Whitefield",
+      "lat": 12.9585,
+      "lng": 77.6645,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Mahadevapura PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Marathahalli Sub-division",
+      "division": "Whitefield",
+      "lat": 12.9922,
+      "lng": 77.6942,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "KR Puram PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Whitefield Sub-division",
+      "division": "Whitefield",
+      "lat": 13.0052,
+      "lng": 77.6952,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Ashok Nagar PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Cubbon Park Sub-division (part)",
+      "division": "Central",
+      "lat": 12.9675,
+      "lng": 77.6056,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Viveknagar PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Cubbon Park Sub-division (part)",
+      "division": "Central",
+      "lat": 12.958,
+      "lng": 77.625,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Kothanur PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Sampigehalli Sub-division",
+      "division": "North-East",
+      "lat": 13.058,
+      "lng": 77.655,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Whitefield PS",
+      "court": "XXIX Addl CMM",
+      "sub_division": "Whitefield Sub-division",
+      "division": "Whitefield",
+      "lat": 12.9721,
+      "lng": 77.7495,
+      "court_complex": "Mayo Hall Court Complex"
+    },
+    {
+      "ps_name": "Subramanyapura PS",
+      "court": "XXX Addl CMM",
+      "sub_division": "Subramanyapura Sub-division",
+      "division": "South",
+      "lat": 12.898,
+      "lng": 77.545,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Kumaraswamy Layout PS",
+      "court": "XXX Addl CMM",
+      "sub_division": "Subramanyapura Sub-division",
+      "division": "South",
+      "lat": 12.9052,
+      "lng": 77.5622,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Konanakunte PS",
+      "court": "XXX Addl CMM",
+      "sub_division": "Subramanyapura Sub-division",
+      "division": "South",
+      "lat": 12.887,
+      "lng": 77.572,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Puttenahalli PS",
+      "court": "XXX Addl CMM",
+      "sub_division": "Subramanyapura Sub-division",
+      "division": "South",
+      "lat": 12.892,
+      "lng": 77.584,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Yeshwanthpur PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Yeshwanthpur Sub-division",
+      "division": "North",
+      "lat": 13.0235,
+      "lng": 77.554,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Jalahalli PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Yeshwanthpur Sub-division",
+      "division": "North",
+      "lat": 13.039,
+      "lng": 77.5485,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Gangammanagudi PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Yeshwanthpur Sub-division",
+      "division": "North",
+      "lat": 13.055,
+      "lng": 77.544,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Peenya PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Peenya Sub-division",
+      "division": "North",
+      "lat": 13.0285,
+      "lng": 77.519,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "RMC Yard PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Peenya Sub-division",
+      "division": "North",
+      "lat": 13.018,
+      "lng": 77.543,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Rajagopalnagar PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Peenya Sub-division",
+      "division": "North",
+      "lat": 13.008,
+      "lng": 77.518,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Bagalagunte PS",
+      "court": "XXXI Addl CMM",
+      "sub_division": "Peenya Sub-division",
+      "division": "North",
+      "lat": 13.042,
+      "lng": 77.508,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Malleshwaram PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 13.0035,
+      "lng": 77.5715,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Srirampura PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 12.991,
+      "lng": 77.568,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Rajajinagar PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 12.9922,
+      "lng": 77.554,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Subramanyanagar PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 12.998,
+      "lng": 77.556,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Mahalakshmi Layout PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 13.012,
+      "lng": 77.546,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Nandini Layout PS",
+      "court": "XXXII ACMM",
+      "sub_division": "Malleshwaram Sub-division",
+      "division": "North",
+      "lat": 13.016,
+      "lng": 77.535,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "VV Puram PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.951,
+      "lng": 77.576,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Hanumanthanagar PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.943,
+      "lng": 77.561,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "KG Nagar PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.948,
+      "lng": 77.568,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Shankarpura PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.949,
+      "lng": 77.571,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Girinagar PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.936,
+      "lng": 77.541,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "CK Achukattu PS",
+      "court": "XXXVII Addl CMM",
+      "sub_division": "VV Puram Sub-division",
+      "division": "South",
+      "lat": 12.932,
+      "lng": 77.562,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Madiwala PS",
+      "court": "XXXIX Addl CMM",
+      "sub_division": "Madiwala Sub-division",
+      "division": "South-East",
+      "lat": 12.9228,
+      "lng": 77.6188,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Koramangala PS",
+      "court": "XXXIX Addl CMM",
+      "sub_division": "Madiwala Sub-division",
+      "division": "South-East",
+      "lat": 12.9344,
+      "lng": 77.6262,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Adugodi PS",
+      "court": "XXXIX Addl CMM",
+      "sub_division": "Madiwala Sub-division",
+      "division": "South-East",
+      "lat": 12.943,
+      "lng": 77.6105,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "HSR Layout PS",
+      "court": "XXXIX Addl CMM",
+      "sub_division": "Madiwala Sub-division",
+      "division": "South-East",
+      "lat": 12.9122,
+      "lng": 77.6442,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Cubbon Park PS",
+      "court": "XLI Addl CMM",
+      "sub_division": "Cubbon Park Sub-division",
+      "division": "Central",
+      "lat": 12.9768,
+      "lng": 77.5951,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Vidhana Soudha PS",
+      "court": "XLI Addl CMM",
+      "sub_division": "Cubbon Park Sub-division",
+      "division": "Central",
+      "lat": 12.9792,
+      "lng": 77.591,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Bellandur PS",
+      "court": "XLI Addl CMM",
+      "sub_division": "Marathahalli Sub-division",
+      "division": "Whitefield",
+      "lat": 12.9265,
+      "lng": 77.6745,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Sampigehalli PS",
+      "court": "XLI Addl CMM",
+      "sub_division": "Sampigehalli Sub-division",
+      "division": "North-East",
+      "lat": 13.074,
+      "lng": 77.624,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Amruthahalli PS",
+      "court": "XLI Addl CMM",
+      "sub_division": "Sampigehalli Sub-division",
+      "division": "North-East",
+      "lat": 13.061,
+      "lng": 77.604,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "JJ Nagar PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Byatarayanapura Sub-division",
+      "division": "West",
+      "lat": 12.964,
+      "lng": 77.551,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Byatarayanapura PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Byatarayanapura Sub-division",
+      "division": "West",
+      "lat": 12.953,
+      "lng": 77.541,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Chandra Layout PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Byatarayanapura Sub-division",
+      "division": "West",
+      "lat": 12.956,
+      "lng": 77.525,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Jnanabharathi PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Kengeri Sub-division",
+      "division": "West",
+      "lat": 12.942,
+      "lng": 77.502,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Kengeri PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Kengeri Sub-division",
+      "division": "West",
+      "lat": 12.9082,
+      "lng": 77.484,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Rajarajeshwari Nagar PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Kengeri Sub-division",
+      "division": "West",
+      "lat": 12.9278,
+      "lng": 77.5162,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    },
+    {
+      "ps_name": "Annapoorneshwari Nagar (AP Nagar) PS",
+      "court": "XLVI ACMM",
+      "sub_division": "Kengeri Sub-division",
+      "division": "West",
+      "lat": 12.969,
+      "lng": 77.511,
+      "court_complex": "City Civil Court Complex, Nrupathunga Rd"
+    }
+  ]
+}

@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bengaluru Map — Google Maps Style</title>
-  <link rel="icon" href="/assets/saferoute_blr_icon.ico" sizes="any" />
-  <link rel="icon" type="image/svg+xml" href="/assets/saferoute_blr_logo.svg" />
-  <link rel="alternate icon" type="image/png" href="/assets/saferoute_blr_logo.png" />
+  <link rel="icon" href="/assets/wszm_icon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/assets/wszm_logo.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/wszm_logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -1284,7 +1284,7 @@
   <div class="sos-modal" id="locPermModal">
     <div class="sos-card" style="text-align:left;max-width:360px;">
       <h3 style="color:#1a73e8;"><i class="fas fa-location-arrow"></i> Allow Location Access</h3>
-      <p id="locPermReason" style="margin-bottom:10px;">SafeRoute BLR needs your live GPS location permission to track your trip to the destination and highlight nearby police stations.</p>
+      <p id="locPermReason" style="margin-bottom:10px;">WSZM needs your live GPS location permission to track your trip to the destination and highlight nearby police stations.</p>
       <div class="loc-perm-err" id="locPermErr"></div>
       <button class="sos-call-btn" id="btnAllowLocPerm" style="background:#1e8e3e;margin-top:10px;" onclick="confirmLocationPermissionRequest()">Allow Location Access</button>
       <button class="sos-call-btn" style="background:#5f6368;" onclick="closeLocationPermissionModal()">Not Now</button>
@@ -1372,8 +1372,19 @@
 
     function zoomMapBy(delta) {
       if (!gMap) return;
-      gMap.setZoom((gMap.getZoom() || 12) + delta);
+      const current = typeof gMap.getZoom === 'function' ? gMap.getZoom() : 12;
+      gMap.setZoom(current + delta);
     }
+
+    window.addEventListener('keydown', e => {
+      const tag = (e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '');
+      if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === '-' || e.key === '_') {
+        zoomMapBy(-1);
+      } else if (e.key === '+' || e.key === '=') {
+        zoomMapBy(1);
+      }
+    });
 
     function panZoomMap(lat, lng, targetZoom) {
       if (!gMap) return;
@@ -2302,13 +2313,15 @@
         gMap = new google.maps.Map(document.getElementById('map'), {
           center: BENGALURU_CENTER,
           zoom: 12,
-          minZoom: 10,
-          maxZoom: 20,
+          minZoom: 2,
+          maxZoom: 21,
           mapTypeId: currentBase === 'terrain' ? google.maps.MapTypeId.TERRAIN : google.maps.MapTypeId.HYBRID,
           disableDefaultUI: true,
           scaleControl: true,
           clickableIcons: true,
-          gestureHandling: 'greedy'
+          scrollwheel: true,
+          gestureHandling: 'greedy',
+          keyboardShortcuts: true
         });
 
         googleInfoWindow = new google.maps.InfoWindow();
@@ -3200,7 +3213,7 @@
       pendingLocCallback = onGranted;
       const reasonEl = document.getElementById('locPermReason');
       const errEl = document.getElementById('locPermErr');
-      if (reasonEl) reasonEl.textContent = reasonText || 'SafeRoute BLR needs your live GPS location permission to locate you and guide you to your destination.';
+      if (reasonEl) reasonEl.textContent = reasonText || 'WSZM needs your live GPS location permission to locate you and guide you to your destination.';
       if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
       document.getElementById('locPermModal').classList.add('show');
     }
@@ -3242,7 +3255,7 @@
     }
 
     function goToMyLocation() {
-      requestLocationWithPermission('Allow SafeRoute BLR to access your current location so we can center the map on you and highlight nearby police stations.', pos => {
+      requestLocationWithPermission('Allow WSZM to access your current location so we can center the map on you and highlight nearby police stations.', pos => {
         const { latitude, longitude } = pos.coords;
         panZoomMap(latitude, longitude, 15);
         if (!gMap || !window.google || !google.maps) return;
@@ -3490,7 +3503,7 @@
     function usePreciseDirLocation() {
       const target = dirActiveField || 'origin';
       const inputEl = target === 'origin' ? dirOriginInput : dirDestInput;
-      requestLocationWithPermission('Allow SafeRoute BLR to access your GPS location to set your starting point or destination.', pos => {
+      requestLocationWithPermission('Allow WSZM to access your GPS location to set your starting point or destination.', pos => {
         const { latitude, longitude } = pos.coords;
         setDirPoint(target, 'Your location', latitude, longitude);
         if (googleApiReady && googleGeocoder) {
@@ -3676,7 +3689,7 @@
     // ═══════════════════════════════════════════════════════════════
     // 11. WEIGHTED ROUTE & AREA SAFETY FORMULA (MIN-MAX + DAY/NIGHT)
     // ═══════════════════════════════════════════════════════════════
-    const BENGALURU_POLICE_STATIONS = [
+    let BENGALURU_POLICE_STATIONS = [
       { name: 'Cubbon Park PS', lat: 12.9768, lng: 77.5951 },
       { name: 'Ashok Nagar PS', lat: 12.9675, lng: 77.6056 },
       { name: 'Commercial Street PS', lat: 12.9825, lng: 77.6095 },
@@ -3744,6 +3757,54 @@
     fetch('./data/bengaluru_crime_summary.json')
       .then(r => (r.ok ? r.json() : null))
       .then(d => { if (d) ncrbCrimeSummary = d; })
+      .catch(() => {});
+
+    let bengaluruCourtJurisdictions = null;
+    function mergeCourtPoliceJurisdictions(courtList) {
+      if (!Array.isArray(courtList) || !courtList.length) return;
+      const normalize = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const byNormName = new Map();
+      BENGALURU_POLICE_STATIONS.forEach(ps => {
+        byNormName.set(normalize(ps.name), ps);
+      });
+      courtList.forEach(cps => {
+        const key = normalize(cps.ps_name);
+        const existing = byNormName.get(key);
+        if (existing) {
+          existing.court = cps.court;
+          existing.sub_division = cps.sub_division;
+          existing.division = cps.division;
+          existing.court_complex = cps.court_complex;
+        } else {
+          const newPs = {
+            name: cps.ps_name,
+            lat: cps.lat,
+            lng: cps.lng,
+            court: cps.court,
+            sub_division: cps.sub_division,
+            division: cps.division,
+            court_complex: cps.court_complex
+          };
+          BENGALURU_POLICE_STATIONS.push(newPs);
+          byNormName.set(key, newPs);
+        }
+      });
+      if (dirRoutes.length) {
+        recomputeAllRouteSafety();
+        renderMultiRouteSummary();
+        renderAllRoutesOnMap();
+      }
+    }
+
+    // Load official court & police jurisdiction gazette data (bengaluru.dcourts.gov.in)
+    fetch('./data/bengaluru_court_police_jurisdictions.json')
+      .then(r => (r.ok ? r.json() : null))
+      .then(d => {
+        if (d && Array.isArray(d.jurisdictions)) {
+          bengaluruCourtJurisdictions = d;
+          mergeCourtPoliceJurisdictions(d.jurisdictions);
+        }
+      })
       .catch(() => {});
 
     function getEffectiveTimeOfDay() {
@@ -3925,7 +3986,16 @@
           const d = haversineKm(pt.lat, pt.lng, ps.lat, ps.lng);
           if (d < minD) minD = d;
         });
-        stationDists.push({ name: ps.name, lat: ps.lat, lng: ps.lng, distKm: minD });
+        stationDists.push({
+          name: ps.name,
+          lat: ps.lat,
+          lng: ps.lng,
+          court: ps.court || 'Magistrate Court Bengaluru',
+          division: ps.division || 'Bengaluru City',
+          sub_division: ps.sub_division || '',
+          court_complex: ps.court_complex || 'City Civil Court Complex',
+          distKm: minD
+        });
       });
       stationDists.sort((a, b) => a.distKm - b.distKm);
       const withinCorridor = stationDists.filter(s => s.distKm <= 2.5).slice(0, 6);
@@ -4254,9 +4324,9 @@
                 <span class="dir-safety-pill ${sf.band.cls}">${sf.score.toFixed(1)}% ${sf.band.label}</span>
               </div>
             </div>
-            <div class="dir-route-via">via ${escapeHtml(rt.summary)} · Nearest PS: ${escapeHtml(sf.closestPs.name)} (${sf.closestPsKm.toFixed(1)} km)</div>
+            <div class="dir-route-via">via ${escapeHtml(rt.summary)} · Nearest PS: <b>${escapeHtml(sf.closestPs.name)}</b>${sf.closestPs.court ? ` (${escapeHtml(sf.closestPs.court)})` : ''} (${sf.closestPsKm.toFixed(1)} km)</div>
             <div style="margin-top:5px;font-size:11px;color:#1e3a8a;line-height:1.45;">
-              <b>Nearby Police Stations:</b> ${(sf.nearbyStations || []).slice(0, 4).map(ps => `<span style="display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;padding:1px 6px;border-radius:10px;font-size:10.5px;font-weight:600;margin:2px 3px 0 0;">${escapeHtml(ps.name)} (${ps.distKm.toFixed(1)} km)</span>`).join('')}
+              <b>Nearby Police Stations (eCourts Jurisdictions):</b> ${(sf.nearbyStations || []).slice(0, 4).map(ps => `<span style="display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;padding:1px 6px;border-radius:10px;font-size:10.5px;font-weight:600;margin:2px 3px 0 0;" title="${escapeHtml(ps.court || 'Magistrate Court')} · ${escapeHtml(ps.division || '')}">${escapeHtml(ps.name)} (${ps.distKm.toFixed(1)} km${ps.court ? ` · ${escapeHtml(ps.court)}` : ''})</span>`).join('')}
             </div>
             <div class="dir-factors-grid">${factorChipsHtml}</div>
             <details class="dir-formula-details" onclick="event.stopPropagation()">
@@ -4313,6 +4383,7 @@
             <summary style="cursor:pointer;font-weight:500;color:#202124;">Data Sources & Street-Level Estimation Note</summary>
             <div style="margin-top:6px;">
               <b>City Baseline:</b> NCRB Crime in India (<i>ncrb.gov.in/crime-in-india.html</i> — Bengaluru metropolitan city dataset; street-level data is not publicly released), <i>data.gov.in</i>, <i>dataful.in</i>, & Karnataka/Bengaluru City Police.${ncrbNote}<br/>
+              <b>Court &amp; Police Jurisdictions:</b> Official Bengaluru District &amp; Sessions Courts portal (<a href="https://bengaluru.dcourts.gov.in/police-station-wise-magistrate/" target="_blank" style="color:#1a73e8;text-decoration:underline;">bengaluru.dcourts.gov.in</a> — CMM Notification No. ADM-I/04/2024 Annexure-A) allocating all 103 police stations across 8 administrative divisions to designated CMM &amp; ACMM territorial magistrate courts.<br/>
               <b>Locality Proxies:</b> OpenStreetMap (police stations, street lights, shops, bus stops) + Bengaluru Police Station & corridor dataset. Note: NCRB advises against comparing cities purely on crime counts due to reporting differences.
             </div>
           </details>
@@ -4744,7 +4815,7 @@
         renderMultiRouteSummary();
       }
       requestLocationWithPermission(
-        'SafeRoute BLR needs access to your device GPS location to track your live movement, remaining distance, ETA, and safety alerts along the route to your destination.',
+        'WSZM needs access to your device GPS location to track your live movement, remaining distance, ETA, and safety alerts along the route to your destination.',
         (pos) => beginWatchTracker(pos)
       );
     }
@@ -4902,7 +4973,9 @@
         const nearPs = findNearestPolice(lat, lng, psList);
         const psEl = document.getElementById('lthPsText');
         if (psEl && nearPs && nearPs.station) {
-          psEl.textContent = `${nearPs.station.name} (${nearPs.distKm.toFixed(2)} km)`;
+          const stn = nearPs.station;
+          const courtNote = stn.court ? ` · ${stn.court}` : '';
+          psEl.textContent = `Nearest PS: ${stn.name} (${nearPs.distKm.toFixed(2)} km${courtNote})`;
         }
       }
 

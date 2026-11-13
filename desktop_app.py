@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-SafeRoute BLR — Python Desktop Application Backend & Launcher
+WSZM — Urban Safety & Navigation Desktop Suite
 =============================================================
 Serves the modern desktop frontend (desktop_ui.html) + Google Maps app
 (bangalore_map.html) with a local REST API for multi-route 5-factor safety
-scoring and NCRB/BCP CSV inspection.
+scoring and statutory eCourts / NCRB CSV inspection.
 """
 
 from __future__ import annotations
@@ -40,6 +40,7 @@ MAP_HTML = ROOT_DIR / "bangalore_map.html"
 DESKTOP_UI_HTML = ROOT_DIR / "desktop_ui.html"
 DATA_DIR = ROOT_DIR / "data"
 SUMMARY_JSON = DATA_DIR / "bengaluru_crime_summary.json"
+COURT_POLICE_JSON = DATA_DIR / "bengaluru_court_police_jurisdictions.json"
 EXTRACTED_DIR = DATA_DIR / "extracted"
 AUTH_SESSION_JSON = DATA_DIR / "user_session.json"
 AUTH_ACCOUNTS_JSON = DATA_DIR / "auth_accounts.json"
@@ -148,6 +149,41 @@ def load_places_and_police() -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]
                 "lat": _parse_js_float_field(obj, "lat"),
                 "lng": _parse_js_float_field(obj, "lng"),
             })
+
+    # Enrich and supplement with official Bengaluru District Court gazette jurisdictions
+    if COURT_POLICE_JSON.exists():
+        try:
+            court_data = json.loads(COURT_POLICE_JSON.read_text(encoding="utf-8"))
+            court_list = court_data.get("jurisdictions", [])
+            norm_key = lambda s: re.sub(r"[^a-z0-9]", "", str(s or "").lower())
+            lookup: Dict[str, Dict[str, Any]] = {}
+            for cj in court_list:
+                lookup[norm_key(cj.get("ps_name", ""))] = cj
+
+            for st in stations:
+                match = lookup.get(norm_key(st["name"]))
+                if match:
+                    st["court"] = match.get("court", "")
+                    st["sub_division"] = match.get("sub_division", "")
+                    st["division"] = match.get("division", "")
+                    st["court_complex"] = match.get("court_complex", "")
+
+            existing_keys = {norm_key(st["name"]) for st in stations}
+            for cj in court_list:
+                k = norm_key(cj.get("ps_name", ""))
+                if k and k not in existing_keys:
+                    stations.append({
+                        "name": cj.get("ps_name", ""),
+                        "lat": float(cj.get("lat", 12.9716)),
+                        "lng": float(cj.get("lng", 77.5946)),
+                        "court": cj.get("court", ""),
+                        "sub_division": cj.get("sub_division", ""),
+                        "division": cj.get("division", ""),
+                        "court_complex": cj.get("court_complex", ""),
+                    })
+                    existing_keys.add(k)
+        except Exception:
+            pass
 
     return (places or DEFAULT_PLACES), (stations or DEFAULT_POLICE)
 
@@ -267,6 +303,10 @@ def compute_route_safety(
             "name": ps["name"],
             "lat": ps["lat"],
             "lng": ps["lng"],
+            "court": ps.get("court", "Magistrate Court Bengaluru"),
+            "division": ps.get("division", "Bengaluru City"),
+            "sub_division": ps.get("sub_division", ""),
+            "court_complex": ps.get("court_complex", "City Civil Court Complex"),
             "dist_km": round(min_d, 2),
         })
     station_dists.sort(key=lambda x: x["dist_km"])
@@ -280,11 +320,14 @@ def compute_route_safety(
         val = sum(s["factors"][fi][1] for s in samples) / len(samples)
         agg_factors.append({"name": fname, "val": val, "weight": wt, "contrib": val * wt})
 
+    closest_ps_obj = closest_ps_sample["closest_ps"]
     return {
         "score": avg_score,
         "min_seg": min_seg,
         "band_label": risk_band_for_score(avg_score),
-        "closest_ps": closest_ps_sample["closest_ps"]["name"],
+        "closest_ps": closest_ps_obj["name"],
+        "closest_ps_court": closest_ps_obj.get("court", "Magistrate Court Bengaluru"),
+        "closest_ps_division": closest_ps_obj.get("division", "Bengaluru City"),
         "closest_ps_km": closest_ps_sample["police_dist_km"],
         "nearby_stations": nearby_stations,
         "factors": agg_factors,
@@ -294,7 +337,7 @@ def compute_route_safety(
 
 
 def _http_get_json(url: str, timeout: float = 8.0) -> Optional[Dict[str, Any]]:
-    req = urllib.request.Request(url, headers={"User-Agent": "SafeRouteBLRDesktop/2.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "WSZMDesktop/2.0"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             if resp.status == 200:
@@ -606,7 +649,7 @@ class DesktopBackendState:
             + urllib.parse.quote(f"{q}, Bengaluru, Karnataka, India")
         )
         try:
-            req = urllib.request.Request(nom_url, headers={"User-Agent": "SafeRouteBLRDesktop/2.0"})
+            req = urllib.request.Request(nom_url, headers={"User-Agent": "WSZMDesktop/2.0"})
             with urllib.request.urlopen(req, timeout=5.0) as resp:
                 if resp.status == 200:
                     arr = json.loads(resp.read().decode("utf-8"))
@@ -646,7 +689,7 @@ def find_app_browser() -> Optional[str]:
 def launch_app_window(url: str) -> Optional[subprocess.Popen[bytes]]:
     browser = find_app_browser()
     if browser:
-        profile_dir = Path(tempfile.gettempdir()) / "SafeRouteBLR_DesktopProfile"
+        profile_dir = Path(tempfile.gettempdir()) / "WSZM_DesktopProfile"
         profile_dir.mkdir(parents=True, exist_ok=True)
         return subprocess.Popen(
             [
@@ -712,12 +755,24 @@ def make_handler(state: DesktopBackendState) -> type[http.server.SimpleHTTPReque
                         summary = json.loads(SUMMARY_JSON.read_text(encoding="utf-8"))
                     except Exception:
                         summary = {}
+                court_summary = {}
+                if COURT_POLICE_JSON.exists():
+                    try:
+                        cj = json.loads(COURT_POLICE_JSON.read_text(encoding="utf-8"))
+                        court_summary = {
+                            "source": cj.get("source", ""),
+                            "notification_reference": cj.get("notification_reference", ""),
+                            "total_stations": cj.get("total_stations", len(cj.get("jurisdictions", []))),
+                        }
+                    except Exception:
+                        court_summary = {}
                 self._send_json(200, {
                     "places": state.places,
                     "station_count": len(state.stations),
                     "weights": SAFETY_WEIGHTS,
                     "csv_files": csv_files,
                     "summary": summary,
+                    "court_summary": court_summary,
                     "port": state.port,
                 })
                 return
@@ -856,7 +911,7 @@ def start_desktop_server(state: DesktopBackendState, preferred_port: int = 8050)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="SafeRoute BLR Python Desktop Application")
+    parser = argparse.ArgumentParser(description="WSZM Python Desktop Application")
     parser.add_argument("--port", type=int, default=8050, help="Preferred localhost port (default: 8050)")
     parser.add_argument("--no-launch", action="store_true", help="Start backend API server without opening window")
     args = parser.parse_args()
@@ -864,7 +919,7 @@ def main() -> None:
     state = DesktopBackendState()
     srv = start_desktop_server(state, preferred_port=args.port)
     url = f"http://127.0.0.1:{state.port}/desktop_ui.html"
-    print(f"SafeRoute BLR Desktop UI running at {url}")
+    print(f"WSZM Desktop UI running at {url}")
 
     if args.no_launch:
         try:
@@ -879,7 +934,7 @@ def main() -> None:
     if importlib.util.find_spec("webview") is not None:
         import webview  # type: ignore
 
-        webview.create_window("SafeRoute BLR — Desktop Intelligence Suite", url, width=1420, height=900)
+        webview.create_window("WSZM — Urban Safety & Navigation Suite", url, width=1420, height=900)
         webview.start()
         srv.shutdown()
         srv.server_close()

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SafeRoute BLR — Desktop Intelligence Suite</title>
-  <link rel="icon" href="/assets/saferoute_blr_icon.ico" sizes="any" />
-  <link rel="icon" type="image/svg+xml" href="/assets/saferoute_blr_logo.svg" />
-  <link rel="alternate icon" type="image/png" href="/assets/saferoute_blr_logo.png" />
+  <title>WSZM — Urban Safety &amp; Navigation Suite</title>
+  <link rel="icon" href="/assets/wszm_icon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/assets/wszm_logo.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/wszm_logo.png" />
   <style>
     :root {
       --bg-app: #0b1120;
@@ -84,16 +84,46 @@
     }
 
     .brand-title {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      color: #ffffff;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
+    }
+
+    .wszm-grad {
+      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 35%, #38bdf8 70%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.45));
+    }
+
+    .brand-title .brand-tag {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      padding: 1.5px 5.5px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #38bdf8;
+      -webkit-text-fill-color: #38bdf8;
+      text-shadow: none;
+      vertical-align: middle;
+      text-transform: uppercase;
     }
 
     .brand-sub {
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 600;
       color: #94a3b8;
-      margin-top: 1px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 3px;
     }
 
     .nav-section-label {
@@ -744,6 +774,46 @@
       box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
     }
 
+    .wszm-stylish-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2.6px;
+      background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 45%, #38bdf8 70%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.15;
+      filter: drop-shadow(0 3px 12px rgba(56, 189, 248, 0.5));
+      text-transform: uppercase;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
+    }
+
+    .wszm-stylish-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #38bdf8;
+      -webkit-text-fill-color: #38bdf8;
+      text-shadow: none;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .wszm-stylish-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
     .login-badge {
       display: inline-flex;
       align-items: center;
@@ -1201,10 +1271,10 @@
       <section class="login-hero">
         <div>
           <div class="login-brand">
-            <img src="/assets/saferoute_blr_logo.svg" alt="SafeRoute BLR Logo" />
+            <img src="/assets/wszm_logo.svg" alt="WSZM Logo" />
             <div>
-              <div style="font-size:17px;font-weight:800;letter-spacing:-0.3px;color:#ffffff;">SafeRoute BLR</div>
-              <div style="font-size:11.5px;color:#94a3b8;">Desktop Intelligence Suite</div>
+              <div class="wszm-stylish-logo"><span class="wszm-grad">WSZM</span> <span class="wszm-stylish-badge">INTELLIGENCE</span></div>
+              <div class="wszm-stylish-sub">Desktop Intelligence Suite</div>
             </div>
           </div>
 
@@ -1260,7 +1330,7 @@
           <span>Google Account Sign-In</span>
         </div>
 
-        <h3 id="loginTitle">Sign in to SafeRoute BLR</h3>
+        <h3 id="loginTitle">Sign in to WSZM</h3>
         <p class="login-card-sub" id="loginCardSub">Sign in with your Google Email ID (<code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;">@gmail.com</code> or Google Workspace) and password.</p>
 
         <div class="auth-tabs" id="authTabs">
@@ -1336,11 +1406,11 @@
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-icon" style="padding:0;overflow:hidden;background:transparent;">
-          <img src="/assets/saferoute_blr_logo.svg" alt="SafeRoute BLR Logo" style="width:100%;height:100%;border-radius:10px;display:block;" />
+          <img src="/assets/wszm_logo.svg" alt="WSZM Logo" style="width:100%;height:100%;border-radius:10px;display:block;" />
         </div>
         <div>
-          <div class="brand-title">SafeRoute BLR</div>
-          <div class="brand-sub">Desktop Safety Suite</div>
+          <div class="brand-title"><span class="wszm-grad">WSZM</span> <span class="brand-tag">SUITE</span></div>
+          <div class="brand-sub">Desktop Intelligence Suite</div>
         </div>
       </div>
 
@@ -1750,11 +1820,11 @@
             </div>
             <div class="route-meta">
               <span><b>${rt.duration_min} min</b> (${rt.distance_km.toFixed(1)} km)</span>
-              <span>Nearest Police: <b>${esc(sf.closest_ps)}</b> (${sf.closest_ps_km.toFixed(1)} km)</span>
+              <span>Nearest Police: <b>${esc(sf.closest_ps)}</b>${sf.closest_ps_court ? ` (${esc(sf.closest_ps_court)})` : ''} (${sf.closest_ps_km.toFixed(1)} km)</span>
             </div>
             <div style="margin-top:8px;font-size:11.5px;color:var(--text-sub);line-height:1.5;">
-              <b style="color:#1e40af;">Nearby Police Stations:</b>
-              ${(sf.nearby_stations || []).slice(0, 4).map(ps => `<span style="display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;margin:2px 4px 0 0;">${esc(ps.name)} (${ps.dist_km.toFixed(1)} km)</span>`).join('')}
+              <b style="color:#1e40af;">Nearby Police Stations (eCourts):</b>
+              ${(sf.nearby_stations || []).slice(0, 4).map(ps => `<span style="display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;margin:2px 4px 0 0;" title="${esc(ps.court || 'Court Jurisdiction')}${ps.division ? ` · ${esc(ps.division)}` : ''}">${esc(ps.name)} (${ps.dist_km.toFixed(1)} km${ps.court ? ` · ${esc(ps.court)}` : ''})</span>`).join('')}
             </div>
             <div class="mini-bars">${chips}</div>
           </div>`;
@@ -1815,12 +1885,17 @@
           score: sf.score || 0,
           min_seg: sf.minSegScore || 0,
           band_label: sf.band ? sf.band.label : 'Medium Safe',
-          closest_ps: sf.closestPs ? sf.closestPs.name : 'Bengaluru PS',
+          closest_ps: sf.closestPs ? (typeof sf.closestPs === 'object' ? sf.closestPs.name : sf.closestPs) : 'Bengaluru PS',
+          closest_ps_court: sf.closestPs && typeof sf.closestPs === 'object' ? (sf.closestPs.court || '') : '',
           closest_ps_km: sf.closestPsKm || 0,
           nearby_stations: (sf.nearbyStations || []).map(ps => ({
             name: ps.name,
             lat: ps.lat,
             lng: ps.lng,
+            court: ps.court || '',
+            division: ps.division || '',
+            sub_division: ps.sub_division || '',
+            court_complex: ps.court_complex || '',
             dist_km: ps.distKm
           })),
           factors: sf.factors || [],
@@ -2046,11 +2121,13 @@
           </button>
         </div>
         <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border-light);">
-          <div style="font-size:12.5px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">Nearby Police Stations Along Selected Route</div>
+          <div style="font-size:12.5px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">Nearby Police Stations &amp; Court Jurisdictions Along Route</div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
             ${(sf.nearby_stations || []).map(ps => `
-              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:9px;padding:6px 10px;font-size:12px;color:#1e40af;">
-                <b>${esc(ps.name)}</b> · ${ps.dist_km.toFixed(1)} km from route
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:9px;padding:8px 12px;font-size:12px;color:#1e40af;line-height:1.45;">
+                <div style="font-weight:700;color:#1e3a8a;">${esc(ps.name)} <span style="font-size:11px;font-weight:500;color:#2563eb;">(${ps.dist_km.toFixed(1)} km)</span></div>
+                ${ps.court ? `<div style="font-size:11px;color:#1d4ed8;margin-top:2px;">Territorial Court: <b>${esc(ps.court)}</b> (${esc(ps.division || 'Bengaluru')})</div>` : ''}
+                ${ps.court_complex ? `<div style="font-size:10.5px;color:#64748b;">${esc(ps.court_complex)}</div>` : ''}
               </div>`).join('')}
           </div>
         </div>`;
@@ -2170,7 +2247,7 @@
       if (tabLogin) tabLogin.classList.toggle('active', authState.mode === 'login');
       if (tabReg) tabReg.classList.toggle('active', authState.mode === 'register');
       if (nameField) nameField.style.display = authState.mode === 'register' ? 'block' : 'none';
-      if (titleEl) titleEl.textContent = authState.mode === 'register' ? 'Register Google Email ID' : 'Sign in to SafeRoute BLR';
+      if (titleEl) titleEl.textContent = authState.mode === 'register' ? 'Register Google Email ID for WSZM' : 'Sign in to WSZM';
       if (btnTxt) btnTxt.textContent = authState.mode === 'register' ? 'Create Account & Sign In' : 'Sign In with Google Email';
       if (pwdInp) {
         pwdInp.autocomplete = authState.mode === 'register' ? 'new-password' : 'current-password';
@@ -2296,7 +2373,7 @@
         authState.recentAccounts = data.recent_accounts || [];
         applyAuthenticatedUser(data.user);
       } catch (err) {
-        showLoginError('Connection to local SafeRoute backend failed: ' + err.message);
+        showLoginError('Connection to local WSZM backend failed: ' + err.message);
       } finally {
         if (btn) btn.disabled = false;
         if (btnTxt) btnTxt.textContent = prevTxt;

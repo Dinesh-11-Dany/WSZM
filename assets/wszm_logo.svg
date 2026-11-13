@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="SafeRoute BLR Logo">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#132347"/>
+      <stop offset="100%" stop-color="#091122"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="15%" y1="5%" x2="85%" y2="95%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="shieldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="routeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="55%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Rounded Squircle Background -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="6"/>
+
+  <!-- Subtle Bengaluru City Grid Lines -->
+  <g stroke="#38bdf8" stroke-opacity="0.11" stroke-width="4" fill="none">
+    <path d="M56 170 L456 120"/>
+    <path d="M56 340 L456 390"/>
+    <path d="M145 56 L115 456"/>
+    <path d="M365 56 L395 456"/>
+    <circle cx="256" cy="256" r="175" stroke-dasharray="10 14"/>
+  </g>
+
+  <!-- Outer Safety Shield -->
+  <path d="M256 76 L398 134 C406 138 410 145 410 154 L410 258 C410 348 345 414 256 446 C167 414 102 348 102 258 L102 154 C102 145 106 138 114 134 Z"
+        fill="url(#shieldGrad)" filter="url(#glow)"/>
+
+  <!-- Inner Dark Slate Shield Core -->
+  <path d="M256 100 L380 151 L380 256 C380 331 325 388 256 418 C187 388 132 331 132 256 L132 151 Z"
+        fill="url(#shieldInner)" stroke="#60a5fa" stroke-opacity="0.35" stroke-width="3"/>
+
+  <!-- Alternative Caution/Moderate Route Ghost Curve -->
+  <path d="M188 332 C170 265 245 255 242 204" fill="none" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 12"/>
+
+  <!-- Highlighted Safe Route Path -->
+  <path d="M188 332 C222 332 214 260 256 254 C298 248 286 190 318 184"
+        fill="none" stroke="url(#routeGrad)" stroke-width="18" stroke-linecap="round" filter="url(#glow)"/>
+
+  <!-- Origin Node (Safe Start) -->
+  <circle cx="188" cy="332" r="20" fill="#0f172a" stroke="#22c55e" stroke-width="8"/>
+  <circle cx="188" cy="332" r="7" fill="#ffffff"/>
+
+  <!-- Destination Map Pin -->
+  <g transform="translate(318, 178)">
+    <path d="M0 -42 C20 -42 35 -27 35 -8 C35 16 0 46 0 46 C0 46 -35 16 -35 -8 C-35 -27 -20 -42 0 -42 Z"
+          fill="#22c55e" stroke="#ffffff" stroke-width="5"/>
+    <circle cx="0" cy="-8" r="11" fill="#ffffff"/>
+  </g>
+
+  <!-- Police / Safety Check Accent Spark -->
+  <circle cx="256" cy="254" r="9" fill="#38bdf8" stroke="#ffffff" stroke-width="3"/>
+</svg>
+

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SafeRoute BLR — Comprehensive Technical Summary & Architecture Report</title>
+  <title>WSZM — Comprehensive Technical Summary &amp; Architecture Report</title>
   <style>
     @page {
       size: A4;
@@ -155,8 +155,8 @@
   <div class="header-card">
     <div class="header-title-row">
       <div>
-        <h1>SafeRoute BLR</h1>
-        <div class="subhead">Comprehensive Project Architecture, Algorithms &amp; Data Flow Specification</div>
+        <h1>WSZM</h1>
+        <div class="subhead">Urban Safety &amp; Navigation Desktop Intelligence Platform — Architecture, Algorithms &amp; Data Flow</div>
       </div>
       <div style="text-align: right;">
         <span class="badge blue">v2.0 Desktop Suite</span>
@@ -177,7 +177,7 @@
     Conventional urban navigation systems (such as standard GPS devices and commercial routing engines) optimize routes strictly for <b>minimal distance or shortest travel time</b>. In major metropolitan areas like Bengaluru, this often funnels pedestrians, two-wheelers, and late-night commuters through dimly lit alleys, isolated ring road bypasses, or areas with sparse emergency service coverage.
   </p>
   <p>
-    <b>SafeRoute BLR</b> bridges this safety gap by evaluating each candidate corridor across an empirical <b>5-Factor Safety Index</b>. The system synthesizes official National Crime Records Bureau (NCRB) crime statistics, Bengaluru City Police jurisdiction coordinates, spatial street lighting coverage, commercial crowd presence, transit connectivity, and dynamic time-of-day risk fluctuations to grade road options into clear <b>Green (Full Safety)</b>, <b>Yellow (Medium Safe)</b>, and <b>Red (Not Safe)</b> tiers.
+    <b>WSZM</b> bridges this safety gap by evaluating each candidate corridor across an empirical <b>5-Factor Safety Index</b>. The system synthesizes official National Crime Records Bureau (NCRB) crime statistics, statutory Bengaluru District Court (eCourts) jurisdiction allocations, Bengaluru City Police coordinates, spatial street lighting coverage, commercial crowd presence, transit connectivity, and dynamic time-of-day risk fluctuations to grade road options into clear <b>Green (Full Safety)</b>, <b>Yellow (Medium Safe)</b>, and <b>Red (Not Safe)</b> tiers.
   </p>
 
   <!-- SECTION 2 -->
@@ -216,11 +216,18 @@
         <td><b><code>bengaluru_crime_extractor.py</code></b></td>
         <td>Python 3, <code>pdfplumber</code>, <code>pypdfium2</code>, <code>pandas</code></td>
         <td>
-          Crime intelligence data pipeline that ingests official NCRB "Crime in India" multi-page PDF documents and extracts 308 verified tabular datasets for Bengaluru into standardized CSV files with summary JSON metadata.
+          Crime intelligence data pipeline that ingests official NCRB "Crime in India" multi-page PDF documents and extracts verified tabular datasets for Bengaluru into standardized CSV files with summary JSON metadata.
         </td>
       </tr>
       <tr>
-        <td><b><code>launch_desktop.bat</code></b> &amp; <b><code>SafeRoute BLR.lnk</code></b></td>
+        <td><b><code>bengaluru_court_extractor.py</code></b></td>
+        <td>Python 3, <code>pdfplumber</code>, <code>urllib</code>, <code>json</code>, <code>csv</code></td>
+        <td>
+          Statutory court jurisdiction extraction engine that scrapes the official Bengaluru District Courts portal (<code>https://bengaluru.dcourts.gov.in/police-station-wise-magistrate/</code>), parses Chief Metropolitan Magistrate (CMM) Notification ADM-I/04/2024 (Annexure-A), and extracts 103 police stations across 8 administrative divisions mapped to designated CMM/ACMM court complexes and geographic coordinates.
+        </td>
+      </tr>
+      <tr>
+        <td><b><code>launch_desktop.bat</code></b> &amp; <b><code>WSZM.lnk</code></b></td>
         <td>Windows Batch &amp; Shell Shortcut</td>
         <td>
           One-click application launcher that detects virtual or system Python environments, binds high-resolution icon assets, and bootstraps the desktop environment seamlessly without manual terminal commands.
@@ -348,6 +355,16 @@
     </tbody>
   </table>
 
+  <h3>3.4. Judicial Jurisdiction Intelligence (bengaluru.dcourts.gov.in)</h3>
+  <p>
+    To move beyond heuristic spatial assumptions, WSZM integrates official gazetted territorial schedules from the <b>Bengaluru District &amp; Sessions Courts</b> portal (<code>https://bengaluru.dcourts.gov.in/police-station-wise-magistrate/</code>). Under Chief Metropolitan Magistrate (CMM) Notification ADM-I/04/2024 (Annexure-A), all 103 police stations across Bengaluru's 8 administrative divisions (Central, East, West, North, South, South-East, Whitefield, North-East) are mapped to 20 designated Magistrate Court divisions:
+  </p>
+  <ul>
+    <li><b>Statutory Coverage:</b> 103 police stations, each linked to designated Magistrate Courts (e.g. Cubbon Park PS &rarr; XLI Addl CMM, Halasuru PS &rarr; X Addl CMM, Koramangala PS &rarr; XXXIX Addl CMM, Peenya PS &rarr; XXXI Addl CMM).</li>
+    <li><b>Court Complexes:</b> Distinguishes territorial hearings between the City Civil Court Complex (Nrupathunga Rd) and Mayo Hall Court Complex.</li>
+    <li><b>Safety Impact:</b> When calculating police proximity factor \(f_{\text{police}}\), the platform accurately links each corridor segment not only to Euclidean station distance but to the statutory law-enforcement and magistrate authority having legal jurisdiction over that segment.</li>
+  </ul>
+
   <div class="page-break"></div>
 
   <!-- SECTION 4 -->
@@ -365,7 +382,7 @@
 
   <h3>4.2. Multi-Route Exploration &amp; Selection State Machine</h3>
   <p>
-    To give travelers complete clarity without visual overload, SafeRoute BLR implements a 3-state route selection lifecycle:
+    To give travelers complete clarity without visual overload, WSZM implements a 3-state route selection lifecycle:
   </p>
   
   <div class="step-item">
@@ -419,7 +436,7 @@
 
   <h3>5.1. Authentication Architecture</h3>
   <p>
-    SafeRoute BLR features a dedicated desktop login page enforcing Google Email ID identification with secure local password hashing:
+    WSZM features a dedicated desktop login page enforcing Google Email ID identification with secure local password hashing:
   </p>
   <ul>
     <li><b>Domain Enforcement:</b> Rejects non-Google webmail domains (Yahoo, Outlook, Proton, iCloud, Zoho). Permits <code>@gmail.com</code>, <code>@googlemail.com</code>, and corporate Google Workspace domains.</li>
@@ -487,13 +504,14 @@
   <!-- SECTION 6 -->
   <h2>6. Summary of Deliverables &amp; System Health</h2>
   <ul>
-    <li><b>Publication PDF:</b> Compiled directly to <code>d:\WSZM\SafeRoute_BLR_Deep_Technical_Summary.pdf</code>.</li>
-    <li><b>Windows Desktop Executable:</b> Double-clickable <code>d:\WSZM\launch_desktop.bat</code> and <code>SafeRoute BLR.lnk</code> shortcut with integrated high-resolution branding.</li>
+    <li><b>Publication PDF:</b> Compiled directly to <code>d:\WSZM\WSZM_Deep_Technical_Summary.pdf</code>.</li>
+    <li><b>Windows Desktop Executable:</b> Double-clickable <code>d:\WSZM\launch_desktop.bat</code> and <code>WSZM.lnk</code> shortcut with integrated high-resolution branding.</li>
+    <li><b>eCourts Territorial Jurisdiction Dataset:</b> 103 Bangalore police stations extracted from <code>bengaluru.dcourts.gov.in</code> (CMM Notification ADM-I/04/2024), saved to <code>data/bengaluru_court_police_jurisdictions.json</code> and browseable CSV in <code>data/extracted/bengaluru_court_police_jurisdictions.csv</code>.</li>
     <li><b>Verification Status:</b> Python backend compiled with zero errors (<code>py_compile</code> exit code 0). Node inline script compilation and DOM ID audits on <code>bangalore_map.html</code> and <code>desktop_ui.html</code> confirmed zero syntax errors and zero missing DOM element references.</li>
   </ul>
 
   <div style="margin-top:24px;border-top:1px solid #cbd5e1;padding-top:10px;font-size:11px;color:#64748b;display:flex;justify-content:space-between;">
-    <span>SafeRoute BLR Technical Report</span>
+    <span>WSZM Technical Report</span>
     <span>Bangalore Urban Safety Platform · Generated November 2026</span>
   </div>
 
